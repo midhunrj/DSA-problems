@@ -96,6 +96,40 @@ search(root,value)
     {
         this.root=this.deletenode(this.root,value)
     }
+    deletenode(root,value)
+    {
+        if(root==null)
+        {
+            return root
+        }
+        if(value<root.value)
+        {
+            root.left=this.deletenode(root.left,value)
+        }
+        else if(value>root.value)
+        {
+            root.right=this.deletenode(root.right,value)
+        }
+        else{
+            if(!root.left&&!root.right)
+            {
+                return null
+            }
+            if(!root.left)
+            {
+                return root.right
+            }
+            else if(!root.right)
+            {
+                return root.left
+            }
+
+            root.value=this.min(root.right)
+            root.right=this.deletenode(root.right.root.value)
+        }
+        return root
+    }
+
  display(root, space = 0, level = 0) {
         if (root === null) {
             return;
@@ -161,39 +195,6 @@ search(root,value)
                 queue.push(curr.right)
             }
         }
-    }
-deletenode(root,value)
-    {
-        if(root==null)
-        {
-            return root
-        }
-        if(value<root.value)
-        {
-            root.left=this.deletenode(root.left,value)
-        }
-        else if(value>root.value)
-        {
-            root.right=this.deletenode(root.right,value)
-        }
-        else{
-            if(!root.left&&!root.right)
-            {
-                return null
-            }
-            if(!root.left)
-            {
-                return root.right
-            }
-            else if(!root.right)
-            {
-                return root.left
-            }
-
-            root.value=this.min(root.right)
-            root.right=this.deletenode(root.right.root.value)
-        }
-        return root
     }
 
 }
