@@ -83,6 +83,7 @@ const notbst=new binarysearchtree()
 notbst.insert(10)
 notbst.insert(5)
 notbst.insert(20)
-notbst.insert(15)
+notbst.insert(3)
+notbst.insert(7)
 
 console.log(notbst,"is this tree a bst?",notbst.isBST());
